@@ -34,3 +34,6 @@ def query_with_fetchmany():
     finally:
         cursor.close()
         conn.close()
+
+if __name__ == '__main__':
+    query_with_fetchmany()
