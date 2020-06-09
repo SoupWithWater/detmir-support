@@ -2,12 +2,12 @@ from mysql.connector import MySQLConnection, Error
 from python_mysql_dbconfig import read_db_config
 
 def connect():
-    """ Connect to hbs-mysql02-prod database """
+    """ Connect to mysql database """
 
     db_config = read_db_config()
 
     try:
-        print('Connecting to hbs-mysql02-prod database...')
+        print('Connecting to' , db_config['database'],' database...')
         conn = MySQLConnection(**db_config)
 
         if conn.is_connected():
