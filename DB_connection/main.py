@@ -1,6 +1,6 @@
+from mysql.connector import MySQLConnection, Error
 from python_mysql_dbconfig import read_db_config
-import mysql.connector
-from mysql.connector import Error
+from SQL_query_incorrect_price import query_with_fetchmany
 
-dbconfig = read_db_config()
-conn = mysql.connector.connect(**dbconfig)
+result = query_with_fetchmany()
+print(result)
