@@ -1,5 +1,5 @@
 from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_db_config
+from SQL_query.python_mysql_dbconfig import read_db_config
 
 def iter_row(cursor, size=10):
     while True:
@@ -8,6 +8,8 @@ def iter_row(cursor, size=10):
             break
         for row in rows:
             yield row
+if __name__ == '__main__':
+    iter_row()
 
 def query_with_fetchmany():
     try:
@@ -36,9 +38,11 @@ def query_with_fetchmany():
     except Error as e:
         print(e)
 
-    finally:
-        cursor.close()
-        conn.close()
+    #finally:
+     #   if cursor():
+      #      cursor.close()
+       # if conn():
+        #    conn.close()
 
     return result
 if __name__ == '__main__':
