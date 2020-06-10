@@ -7,4 +7,5 @@ webUrl = urllib.request.urlopen('http://cubic01:8983/solr/#/detmir-stocks/query'
 requestS = urllib.request.urlopen('http://cubic01:8983/solr/detmir-stocks/select?q=product_code:%201000024611')
 request1 = requestS.read()
 print(request1)
+print(type(request1))
 

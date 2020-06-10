@@ -7,7 +7,7 @@ def connect():
     db_config = read_db_config()
 
     try:
-        print('Connecting to' , db_config['database'],' database...')
+        print('Connecting to', db_config['database'],' database...')
         conn = MySQLConnection(**db_config)
 
         if conn.is_connected():
