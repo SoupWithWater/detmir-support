@@ -59,7 +59,6 @@ def sql_courier_refund(date_refund):
         for row in iter_row(cursor, 10):
             need_refund_all.extend(list(row))
 
-        print(need_refund_all)
 
         orders = list_to_string(need_refund_all)
 
@@ -93,8 +92,6 @@ def sql_courier_refund(date_refund):
         for row in iter_row(cursor, 10):
             refund_follow_on_accepted.extend(list(row))
 
-        print(refund_follow_on_accepted)
-
         need_refund = need_refund_all
 
         for order in refund_follow_on_accepted:
@@ -102,7 +99,7 @@ def sql_courier_refund(date_refund):
 
         print("Заказы, по которым требуется ручной возврат:")
         for order in need_refund:
-            print(order)
+            print(order.decode('utf-8'))
 
     except Error as e:
         print(e)
