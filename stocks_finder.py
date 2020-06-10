@@ -14,7 +14,7 @@ def stocks_finder(**sql_result):
 
         product_id = str(sql_result.get(product_code))
 
-        solr_response_http = urllib.request.urlopen(f'http://cubic01:8983/solr/detmir-delivery/select?fl=offline_stock&q=product_id:{product_id}&rows=200&wt=python')
+        solr_response_http = urllib.request.urlopen(f'http://cubic01:8983/solr/detmir-delivery/select?fl=offline_stock&q=product_id:{product_id}%20AND%20region:%20RU-MOW&rows=200&wt=python')
         solr_response = (solr_response_http.read()).decode('utf-8')
         stock_str = solr_response[(solr_response.find('[')) + 2:-7]
         stock_str = stock_str.replace('\n', '').replace(' ', '').replace("'", "").replace('{', '').replace('}', '')
@@ -27,7 +27,7 @@ def stocks_finder(**sql_result):
                     print(f'У товара {product_code} найдены offline стоки')
                     print(f'Всего обработано {processing_count} из {len(sql_result)}')
 
-        solr_response_http = urllib.request.urlopen(f'http://cubic01:8983/solr/detmir-delivery/select?fl=online_stock&q=product_id:{product_id}&rows=200&wt=python')
+        solr_response_http = urllib.request.urlopen(f'http://cubic01:8983/solr/detmir-delivery/select?fl=online_stock&q=product_id:{product_id}%20AND%20region:%20RU-MOW&rows=200&wt=python')
         solr_response = (solr_response_http.read()).decode('utf-8')
         stock_str = solr_response[(solr_response.find('[')) + 2:-7]
         stock_str = stock_str.replace('\n', '').replace(' ', '').replace("'", "").replace('{', '').replace('}', '')

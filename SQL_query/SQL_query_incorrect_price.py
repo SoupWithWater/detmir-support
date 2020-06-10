@@ -39,8 +39,8 @@ def query_with_fetchmany():
 
         for row in iter_row(cursor, 10):
             #print(row)
-            product = row[0]
-            sale = row[1]
+            product = (row[0]).decode('utf-8')
+            sale = (row[1]).decode('utf-8')
             result.update({product:sale})
 
         #print (result)
