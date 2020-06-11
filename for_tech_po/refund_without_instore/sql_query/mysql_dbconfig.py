@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 
 
-def read_db_config(filename='SQL_query/config.ini', section='mysql'):
+def read_db_config(filename='sql_query/config.ini', section='mysql'):
 
     # create parser and read ini configuration file
     parser = ConfigParser()
