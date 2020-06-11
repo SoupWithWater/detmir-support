@@ -13,8 +13,6 @@ from sql_query.iter_row import iter_row
 def refund():
     try:
 
-        date_refund = '20200610'
-
         print('Connecting to hbs-mysql02-prod [...', end='')
         dbconfig = read_db_config()
         print('...', end='')
@@ -27,10 +25,9 @@ def refund():
         else:
             print('connection failed.')
 
-
-
-
-        date_refund = '20200610'
+        print('Дата доставки в SQL формате: ', end='')
+        date_refund = str(input())
+        print('Выгружаю заказы \n')
 
 
         courier = sql_courier_refund(date_refund, cursor)
@@ -39,6 +36,7 @@ def refund():
             for order in courier:
                 print(order.decode('utf-8'))
         else: print('_______')
+        print()
         cursor = cursor.close()
 
         cursor = conn.cursor()
@@ -48,6 +46,7 @@ def refund():
             for order in express:
                 print(order.decode('utf-8'))
         else: print('_______')
+        print()
         cursor = cursor.close()
 
         cursor = conn.cursor()
@@ -57,6 +56,7 @@ def refund():
             for order in logistpickup:
                 print(order.decode('utf-8'))
         else: print('_______')
+        print()
         cursor = cursor.close()
 
         cursor = conn.cursor()
@@ -67,6 +67,8 @@ def refund():
                 print(order.decode('utf-8'))
         else:
             print('_______')
+        print()
+        cursor = cursor.close()
 
         cursor = conn.cursor()
         storepickup = sql_storepickup_refund(date_refund, cursor)
@@ -76,7 +78,8 @@ def refund():
                 print(order.decode('utf-8'))
         else:
             print('_______')
-
+        print()
+        print('Выгружено')
 
     except Error as e:
         print(e)
