@@ -29,9 +29,30 @@ def refund():
 
 
         date_refund = '20200610'
+
+
         courier = sql_courier_refund(date_refund, cursor)
+        print('[LOGIST]')
+        if courier != []:
+            for order in courier:
+                print(order.decode('utf-8'))
+        else: print('_______')
+        cursor = cursor.close()
+        cursor = conn.cursor()
         express = sql_express_refund(date_refund, cursor)
+        print('[EXPRESS]')
+        if express != []:
+            for order in express:
+                print(order.decode('utf-8'))
+        else: print('_______')
+        cursor = cursor.close()
+        cursor = conn.cursor()
         logistpickup = sql_logistpickup_refund(date_refund, cursor)
+        print('[STOREPICKUP]')
+        if logistpickup != []:
+            for order in logistpickup:
+                print(order.decode('utf-8'))
+        else: print('_______')
 
 
     except Error as e:
