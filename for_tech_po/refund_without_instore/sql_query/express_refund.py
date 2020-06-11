@@ -36,7 +36,8 @@ def sql_express_refund(date_refund, cursor):
 
         orders = list_to_string(need_refund_all)
 
-        cursor.execute(f"SELECT DISTINCT o.code\
+        if orders != '':
+            cursor.execute(f"SELECT DISTINCT o.code\
                             FROM orders AS o\
                                 JOIN enumerationvalueslp AS elp\
                                     ON elp.ITEMPK=o.statuspk\
