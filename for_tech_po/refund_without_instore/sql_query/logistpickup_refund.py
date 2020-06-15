@@ -66,8 +66,6 @@ def sql_logistpickup_refund(date_refund, cursor):
         for order in refund_follow_on_accepted:
             need_refund.remove(order)
 
-        for order in need_refund:
-
         return need_refund
 
 if __name__ == '__main__':
