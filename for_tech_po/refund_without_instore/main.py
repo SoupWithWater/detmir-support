@@ -51,10 +51,10 @@ def refund():
         cursor = cursor.close()
 
         cursor = conn.cursor()
-        logistpickup = sql_logistpickup_refund(date_refund, cursor)
+        storepickup = sql_logistpickup_refund(date_refund, cursor)
         print('[STOREPICKUP]')
-        if logistpickup != []:
-            for order in logistpickup:
+        if storepickup != []:
+            for order in storepickup:
                 print(str(order))
         else: print('_______')
         print()
