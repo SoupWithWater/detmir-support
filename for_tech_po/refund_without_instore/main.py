@@ -35,7 +35,7 @@ def refund():
         print('[LOGIST]')
         if courier != []:
             for order in courier:
-                print(str(order.decode('utf-8')))
+                print(str(order))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -45,7 +45,7 @@ def refund():
         print('[EXPRESS]')
         if express != []:
             for order in express:
-                print(str(order.decode('utf-8')))
+                print(str(order))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -55,7 +55,7 @@ def refund():
         print('[STOREPICKUP]')
         if logistpickup != []:
             for order in logistpickup:
-                print(str(order.decode('utf-8')))
+                print(str(order))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -65,7 +65,7 @@ def refund():
         print('[LASTMILE]')
         if lastmile != []:
             for order in lastmile:
-                print(str(order.decode('utf-8')))
+                print(str(order))
         else:
             print('_______')
         print()
@@ -76,7 +76,7 @@ def refund():
         print('[LOGISTPICKUP]')
         if logistpickup != []:
             for order in logistpickup:
-                print(str(order.decode('utf-8')))
+                print(str(order))
         else:
             print('_______')
         print()
