@@ -10,6 +10,7 @@ from sql_query.iter_row import iter_row
 
 
 
+
 def refund():
     try:
 
@@ -25,7 +26,7 @@ def refund():
         else:
             print('connection failed.')
 
-        print('Дата доставки в SQL формате: ', end='')
+        print('Дата возврата в SQL формате: ', end='')
         date_refund = str(input())
         print('Выгружаю заказы \n')
 
@@ -34,7 +35,7 @@ def refund():
         print('[LOGIST]')
         if courier != []:
             for order in courier:
-                print(order.decode('utf-8'))
+                print(str(order.decode('utf-8')))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -44,7 +45,7 @@ def refund():
         print('[EXPRESS]')
         if express != []:
             for order in express:
-                print(order.decode('utf-8'))
+                print(str(order.decode('utf-8')))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -54,7 +55,7 @@ def refund():
         print('[STOREPICKUP]')
         if logistpickup != []:
             for order in logistpickup:
-                print(order.decode('utf-8'))
+                print(str(order.decode('utf-8')))
         else: print('_______')
         print()
         cursor = cursor.close()
@@ -64,18 +65,18 @@ def refund():
         print('[LASTMILE]')
         if lastmile != []:
             for order in lastmile:
-                print(order.decode('utf-8'))
+                print(str(order.decode('utf-8')))
         else:
             print('_______')
         print()
         cursor = cursor.close()
 
         cursor = conn.cursor()
-        storepickup = sql_storepickup_refund(date_refund, cursor)
-        print('[STOREPICKUP]')
-        if storepickup != []:
-            for order in storepickup:
-                print(order.decode('utf-8'))
+        logistpickup = sql_logistpickup_refund(date_refund, cursor)
+        print('[LOGISTPICKUP]')
+        if logistpickup != []:
+            for order in logistpickup:
+                print(str(order.decode('utf-8')))
         else:
             print('_______')
         print()
