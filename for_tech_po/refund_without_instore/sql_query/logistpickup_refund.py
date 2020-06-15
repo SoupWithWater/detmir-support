@@ -67,7 +67,6 @@ def sql_logistpickup_refund(date_refund, cursor):
             need_refund.remove(order)
 
         for order in need_refund:
-            print(order.decode('utf-8'))
 
         return need_refund
 
