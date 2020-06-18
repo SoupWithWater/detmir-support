@@ -30,6 +30,8 @@ for product in products_list:
 
                 if str(category_data[0]) == str(product_response['product_category_primary']):
                     main_category = category_data[2]
+            if (main_category != '') & (level_two_category != ''):
+                break
 
 
     print(main_category, ',', level_two_category, ',', end='')
