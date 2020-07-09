@@ -17,7 +17,7 @@ brand_list = get_brand_list()
 for product in products_list:
     solr_request = urllib.request.urlopen(f'http://cubic01:8983/solr/detmir-products/select?fl=product_all_categories,product_rating,product_code,product_article,product_name_ru,product_category_primary,product_review_count,product_brand&q=product_code:{product}')
     product_response = parsing(solr_request)
-    print(product_response['product_code'], ',', product_response['product_name_ru'], ',', end='')
+    print(product_response['product_code'], ';', product_response['product_name_ru'], ';', end='')
 
     main_category = ''
     level_two_category = ''
@@ -34,14 +34,14 @@ for product in products_list:
                 break
 
 
-    print(main_category, ',', level_two_category, ',', end='')
+    print(main_category, ';', level_two_category, ';', end='')
 
     brand = ''
     for brands in brand_list:
         if str(brands[0]) == str(product_response['product_brand']):
             brand = brands[1]
 
-    print(product_response['product_article'], ',', brand, ',', round(product_response['product_rating'], 1))
+    print(product_response['product_article'], ';', brand, ';', round(product_response['product_rating'], 1), ';', product_response['product_review_count'])
 
 
 
