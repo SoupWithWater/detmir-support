@@ -49,6 +49,7 @@ def refund():
         cursor = cursor.close()
 
         cursor = conn.cursor()
+
         instore = sql_instore_refund(date_refund, cursor)
         print('[INSTORE]')
         if instore != []:
@@ -60,6 +61,7 @@ def refund():
         cursor = cursor.close()
 
         cursor = conn.cursor()
+
         storepickup = sql_storepickup_refund(date_refund, cursor)
         print('[STOREPICKUP]')
         if storepickup != []:
