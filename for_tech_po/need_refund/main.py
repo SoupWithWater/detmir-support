@@ -29,7 +29,7 @@ def refund():
         print('Выгружаю заказы \n')
 
 
-        """courier = sql_courier_refund(date_refund, cursor)
+        courier = sql_courier_refund(date_refund, cursor)
         print('[LOGIST]')
         if courier != []:
             for order in courier:
@@ -46,9 +46,9 @@ def refund():
                 print(str(order))
         else: print('_______')
         print()
-        cursor = cursor.close()"""
+        cursor = cursor.close()
 
-        cursor = conn.cursor()
+        """cursor = conn.cursor()
 
         instore = sql_instore_refund(date_refund, cursor)
         print('[INSTORE]')
@@ -58,7 +58,7 @@ def refund():
         else:
             print('_______')
         print()
-        cursor = cursor.close()
+        cursor = cursor.close()"""
 
         cursor = conn.cursor()
 
