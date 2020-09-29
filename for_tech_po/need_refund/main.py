@@ -1,6 +1,7 @@
 from mysql.connector import MySQLConnection, Error, cursor
 from sql_query.courier_refund import sql_courier_refund
 from sql_query.express_refund import sql_express_refund
+from sql_query.superexpress_refund import sql_superexpress_refund
 from sql_query.instore_refund_new import sql_instore_refund
 from sql_query.logistpickup_refund import sql_logistpickup_refund
 from sql_query.lastmile_refund import sql_lastmile_refund
@@ -76,6 +77,17 @@ def refund():
         print('[LASTMILE]')
         if lastmile != []:
             for order in lastmile:
+                print(str(order))
+        else:
+            print('_______')
+        print()
+        cursor = cursor.close()
+
+        cursor = conn.cursor()
+        superexpress = sql_superexpress_refund(date_refund, cursor)
+        print('[SUPER_EXPRESS]')
+        if superexpress != []:
+            for order in superexpress:
                 print(str(order))
         else:
             print('_______')

@@ -2,7 +2,7 @@ from sql_query.mysql_dbconfig import read_db_config
 from sql_query.list_to_string import list_to_string
 from sql_query.iter_row import iter_row
 
-def sql_lastmile_refund(date_refund, cursor):
+def sql_superexpress_refund(date_refund, cursor):
         need_refund_all = []
         refund_follow_on_accepted = []
 
@@ -26,7 +26,7 @@ def sql_lastmile_refund(date_refund, cursor):
                             WHERE elp.LANGPK=8796093349920\
                                 AND o.createdTS>20200501\
                                 AND p.code='card' \
-                                AND d.code='lastmile' \
+                                AND d.code='super_express' \
                                 AND oh.p_description like '%новый статус=Готов к выдаче%'\
                                 AND pte.p_transactionstatus='CREATE_SUBSCRIPTION_ACCEPTED'\
                                 AND date(oh.createdts) = '{date_refund}'\
