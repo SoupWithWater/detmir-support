@@ -59,7 +59,7 @@ def sql_instore_refund(date_refund, cursor):
             for row in iter_row(cursor, 10):
                 refund_follow_on_accepted_1.extend(list(row))
 
-        cursor.execute(f"SELECT DISTINCT o.code,\
+        cursor.execute(f"SELECT DISTINCT o.code\
                 from orders AS o\
                 JOIN enumerationvalueslp AS elp\
                 ON elp.ITEMPK=o.statuspk\
@@ -118,7 +118,13 @@ def sql_instore_refund(date_refund, cursor):
 
         need_refund = need_refund_all_1 + need_refund_all_2
         refund_follow_on_accepted = refund_follow_on_accepted_1 + refund_follow_on_accepted_2
+        need_refund = list(set(need_refund))
+        refund_follow_on_accepted = list(set(refund_follow_on_accepted))
 
+        """print(type(need_refund))
+        print(need_refund)
+        print(type(refund_follow_on_accepted))
+        print(refund_follow_on_accepted)"""
 
         for order in refund_follow_on_accepted:
             need_refund.remove(order)

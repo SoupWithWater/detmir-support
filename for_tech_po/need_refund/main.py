@@ -2,13 +2,14 @@ from mysql.connector import MySQLConnection, Error, cursor
 from sql_query.courier_refund import sql_courier_refund
 from sql_query.express_refund import sql_express_refund
 from sql_query.superexpress_refund import sql_superexpress_refund
-from sql_query.instore_refund_new import sql_instore_refund
+from sql_query.instore_refund import sql_instore_refund
 from sql_query.logistpickup_refund import sql_logistpickup_refund
 from sql_query.lastmile_refund import sql_lastmile_refund
 from sql_query.storepickup_refund import sql_storepickup_refund
 from sql_query.list_to_string import list_to_string
 from sql_query.mysql_dbconfig import read_db_config
 from sql_query.iter_row import iter_row
+import itertools
 
 def refund():
     try:
@@ -29,7 +30,6 @@ def refund():
         date_refund = str(input())
         print('Выгружаю заказы \n')
 
-        """
         courier = sql_courier_refund(date_refund, cursor)
         print('[LOGIST]')
         if courier != []:
@@ -49,7 +49,6 @@ def refund():
         print()
         cursor = cursor.close()
 
-        """
         cursor = conn.cursor()
 
         instore = sql_instore_refund(date_refund, cursor)
@@ -61,7 +60,6 @@ def refund():
             print('_______')
         print()
         cursor = cursor.close()
-        """
 
         cursor = conn.cursor()
 
@@ -104,7 +102,7 @@ def refund():
                 print(str(order))
         else:
             print('_______')
-        print() """
+        print()
 
         print('Выгружено')
 
