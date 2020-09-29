@@ -74,4 +74,4 @@ def sql_superexpress_refund(date_refund, cursor):
         return need_refund
 
 if __name__ == '__main__':
-    sql_lastmile_refund()
+    sql_superexpress_refund()
