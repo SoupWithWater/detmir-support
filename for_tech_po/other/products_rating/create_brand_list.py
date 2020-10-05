@@ -1,7 +1,7 @@
 import urllib.request
 
 def get_brand_list():
-    solr_request = urllib.request.urlopen('http://cubic01:8983/solr/detmir-brands/select?fl=id,%20name&q=*:*&rows=4000&wt=csv')
+    solr_request = urllib.request.urlopen('http://cubic-solr-01:8983/solr/detmir-brands/select?fl=id,%20name&q=*:*&rows=4000&wt=csv')
     solr_request = (solr_request.read()).decode('utf-8')
     solr_request = solr_request.split('\n')
 
