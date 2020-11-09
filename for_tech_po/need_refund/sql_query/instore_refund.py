@@ -24,7 +24,7 @@ def sql_instore_refund(date_refund, cursor):
                 ON pt.p_order=o.PK\
                 JOIN paymnttrnsctentries AS pte\
                 ON pte.p_paymenttransaction=pt.PK\
-                AND o.createdTS > '20200915'\
+                AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                 AND p.code='card'\
                 AND d.code='instore'\
                 AND ((oh.p_description like '%Перемещён в розницу%') or (oh.p_description like '%Готов к выдаче частично%'))\
@@ -81,7 +81,7 @@ def sql_instore_refund(date_refund, cursor):
                 ON pt.p_order=o.PK\
                 JOIN paymnttrnsctentries AS pte\
                 ON pte.p_paymenttransaction=pt.PK\
-                AND o.createdTS > '20200915'\
+                AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                 AND p.code='card'\
                 AND d.code='instore'\
                 AND oh.p_description like '%Реализация%'\

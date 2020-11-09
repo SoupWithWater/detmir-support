@@ -24,7 +24,7 @@ def sql_lastmile_refund(date_refund, cursor):
                                 JOIN paymnttrnsctentries AS pte\
                                     ON pte.p_paymenttransaction=pt.PK\
                             WHERE elp.LANGPK=8796093349920\
-                                AND o.createdTS>20200501\
+                                AND o.createdTS>(CURDATE() - INTERVAL 20 DAY)\
                                 AND p.code='card' \
                                 AND d.code='lastmile' \
                                 AND oh.p_description like '%новый статус=Готов к выдаче%'\

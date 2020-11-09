@@ -24,7 +24,7 @@ def sql_storepickup_refund(date_refund, cursor):
                                 JOIN paymnttrnsctentries AS pte\
                             ON pte.p_paymenttransaction=pt.PK\
                         WHERE oelp.p_name='частичная комплектация' \
-                            AND o.createdTS > '2020-05-01'\
+                            AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                             AND p.code='card'\
                             AND d.code = 'storepickup'\
                             AND oh.p_description like '%новый статус=Отгружен%'\

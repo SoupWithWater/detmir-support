@@ -25,7 +25,7 @@ def sql_courier_refund(date_refund, cursor):
                             WHERE elp.LANGPK=8796093349920 \
                                 AND oelp.LANGPK=8796093349920\
                                 AND oelp.p_name='частичная комплектация'\
-                                AND o.createdTS > '20200520'\
+                                AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                                 AND p.code='card'\
                                 and d.code='logist'\
                                 AND oh.p_description like '%%новый статус=Отгружен%%'\
@@ -57,7 +57,7 @@ def sql_courier_refund(date_refund, cursor):
                                     WHERE elp.LANGPK=8796093349920 \
                                         AND oelp.LANGPK=8796093349920\
                                         AND oelp.p_name='частичная комплектация'\
-                                        AND o.createdTS>'20200520'\
+                                        AND o.createdTS>(CURDATE() - INTERVAL 20 DAY)\
                                         AND p.code='card'\
                                         AND pte.p_transactionstatus='REFUND_FOLLOW_ON_ACCEPTED'\
                                         and o.code IN ({orders})")
