@@ -82,6 +82,7 @@ def sql_instore_refund(date_refund, cursor):
                 JOIN paymnttrnsctentries AS pte\
                 ON pte.p_paymenttransaction=pt.PK\
                 AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
+                AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
                 AND p.code='card'\
                 AND d.code='instore'\
                 AND oh.p_description like '%Реализация%'\

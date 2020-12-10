@@ -24,6 +24,7 @@ def sql_express_refund(date_refund, cursor):
                                     ON pte.p_paymenttransaction=pt.PK\
                             WHERE elp.LANGPK=8796093349920\
                                 AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
+                                AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
                                 AND p.code='card'\
                                 AND d.code='express_courier'\
                                 AND oh.p_description like '%новый статус=Частичный возврат%'\
@@ -55,6 +56,7 @@ def sql_express_refund(date_refund, cursor):
                                     ON pte.p_paymenttransaction=pt.PK\
                             WHERE elp.LANGPK=8796093349920\
                                 AND o.createdTS >(CURDATE() - INTERVAL 20 DAY)\
+                                AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
                                 AND p.code='card'\
                                 AND pte.p_transactionstatus='REFUND_FOLLOW_ON_ACCEPTED'\
                                 AND o.code IN ({orders})")

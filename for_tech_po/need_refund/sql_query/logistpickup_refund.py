@@ -25,6 +25,7 @@ def sql_logistpickup_refund(date_refund, cursor):
                             ON pte.p_paymenttransaction=pt.PK\
                         WHERE oelp.p_name='частичная комплектация' \
                             AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
+                            AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
                             AND p.code='card'\
                             AND d.code = 'logist_pickup'\
                             AND oh.p_description like '%новый статус=Отгружен%'\
