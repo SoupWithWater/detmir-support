@@ -109,7 +109,6 @@ def sql_instore_refund(date_refund, cursor):
                 ON pt.p_order=o.PK\
                 JOIN paymnttrnsctentries AS pte\
                 ON pte.p_paymenttransaction=pt.PK\
-                 AND oh.p_description like '%ВОЗВРАТ%'\
                  AND pte.p_transactionstatus='REFUND_FOLLOW_ON_ACCEPTED'\
                 AND o.code IN ({orders})")
 

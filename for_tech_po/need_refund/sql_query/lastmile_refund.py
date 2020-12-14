@@ -57,7 +57,6 @@ def sql_lastmile_refund(date_refund, cursor):
                                 JOIN paymnttrnsctentries AS pte\
                                     ON pte.p_paymenttransaction=pt.PK\
                             WHERE elp.LANGPK='8796093349920'\
-                                AND oh.p_description like'%ВОЗВРАТ%'\
                                 AND pte.p_transactionstatus = 'REFUND_FOLLOW_ON_ACCEPTED'\
                                 AND elp.p_name != 'Готов к выдаче'\
                                 AND o.code IN({orders})\
