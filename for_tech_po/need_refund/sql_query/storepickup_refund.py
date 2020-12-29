@@ -23,12 +23,15 @@ def sql_storepickup_refund(date_refund, cursor):
                             ON pt.p_order=o.PK\
                                 JOIN paymnttrnsctentries AS pte\
                             ON pte.p_paymenttransaction=pt.PK\
+                                LEFT JOIN enumerationvalueslp as elp\
+                            ON elp.ITEMPK = o.statuspk\
                         WHERE oelp.p_name='частичная комплектация' \
                             AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                             AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
                             AND p.code='card'\
                             AND d.code = 'storepickup'\
                             AND oh.p_description like '%новый статус=Отгружен%'\
+                            AND elp.p_name IN ('Реализация', 'Частичная реализация')\
                             AND date(oh.createdTS) = '{date_refund}'\
                             AND pte.p_transactionstatus='CREATE_SUBSCRIPTION_ACCEPTED'")
 
