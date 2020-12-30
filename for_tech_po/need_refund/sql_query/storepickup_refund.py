@@ -23,8 +23,6 @@ def sql_storepickup_refund(date_refund, cursor):
                             ON pt.p_order=o.PK\
                                 JOIN paymnttrnsctentries AS pte\
                             ON pte.p_paymenttransaction=pt.PK\
-                                LEFT JOIN enumerationvalueslp as elp\
-                            ON elp.ITEMPK = o.statuspk\
                         WHERE oelp.p_name='частичная комплектация' \
                             AND o.createdTS > (CURDATE() - INTERVAL 20 DAY)\
                             AND o.modifiedTS < CURDATE() - INTERVAL 40 MINUTE\
